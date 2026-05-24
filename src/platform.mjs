@@ -20,6 +20,7 @@ import LeakSensorAccessory from "../lib/accessories/hap/leak_sensor_accessory.mj
 import PushAccessory from "../lib/accessories/hap/push_accessory.mjs";
 import MotionSensorAccessory from "../lib/accessories/hap/motionsensor_accessory.mjs";
 import ValveAccessory from "../lib/accessories/hap/valve_accessory.mjs";
+import DiffuserAccessory from "../lib/accessories/hap/diffuser_accessory.mjs";
 
 import LogUtil from "../util/logutil.mjs";
 import DataUtil from "../util/datautil.mjs";
@@ -393,6 +394,9 @@ class TuyaPlatform {
           : new SwitchAccessory(this, homebridgeAccessory, device, deviceData);
         break;
       }
+      case "xxj":
+        deviceAccessory = new DiffuserAccessory(this, homebridgeAccessory, device);
+        break;
       default:
         this.log.debug(`Unsupported device type: ${deviceType}`);
         return;
